@@ -54,37 +54,3 @@ function obtenerMoneda(){
     console.log(moneda);
 }
 //---------------------------------------------------------------------
-
-// let datos = [];
-
-// function ingresarDato(año,mes){
-//     this.año = año;
-//     this.mes = mes;
-// }
-
-// crearDato(datoAño,datoMes);
-
-
-
-
-// let datos = [];
-
-// function ingresarDato(tipoDato,nombreDato,montoDato,mesDato){
-//     this.tipoDato = tipoDato;
-//     this.nombreDato = nombreDato;
-//     this.montoDato = montoDato;
-//     this.mesDato = mesDato;
-// }
-
-// function crearDato(){
-//     let tipo = ("Ingreso o Gasto?");
-//     let nombre = ("Nombre del Movimiento");
-//     let monto = parseIn("Introduce el Monto");
-//     let mes = ("Mes del Movimiento");
-
-//     let datos = new ingresarDato(tipo,nombre,monto,mes);
-// }
-
-// for (i = 0; i < cantidadDatos ; i++) {
-//     crearDato();
-// }
