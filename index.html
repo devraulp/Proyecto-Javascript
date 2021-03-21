@@ -5,32 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <script src="script.js"></script>
-    <link rel="stylesheet" href="style.css">
     <title>MiBalance</title>
 </head>
 <body>
+
+    <!------------------------------- HEADER ------------------------------------------------->
+
     <h1 class="display-1, text-center">Mi Balance</h1>
+
+    <!------------------------------ SIDE MENU ----------------------------------------------->
     <div class="container">
         <div class="row">
             <div class="col-3">
+
+                <!--------------- SIDE MENU TITLE -------------------------------------------->
                 <h3 class="text-center">Ingreso de Datos</h3>
-
-                <div class="input-group mb-3">
-                    <span class="input-group-text" >Fecha</span>
-                    <input  class="form-control"                             
-                            id="fecha" type="date" 
-                            placeholder="dd/mm/yyyy"
-                            oninput="obtenerFecha();">                                                
-                </div>
-
+                
+                <!------------------ TIPO INPUT ----------------------------------------------->
                 <div class="input-group mb-3">
                     <label class="input-group-text" for="inputGroupSelect01">Tipo</label>
-                    <select class="form-select" id="tipo" onchange= "mostrarCuotas(); obtenerTipo()">
+                    <select class="form-select" id="tipo">
                         <option selected>Selecciona</option>
-                        <option value="1">Ingreso</option>
-                        <option value="2">Gasto</option>
-                        <option value="3">Deuda</option>
+                        <option value="Ingreso">Ingreso</option>
+                        <option value="Gasto">Gasto</option>
+                        <!-- <option value="Deuda">Deuda</option> -->
                     </select>
                 </div>
 
@@ -39,91 +37,86 @@
                     <input  type="number" class="form-control" 
                             aria-label="Sizing example input" 
                             aria-describedby="inputGroup-sizing-default" 
-                            value="0" onchange="obtenerCuotas();" id="numCuotas">
+                            value="0" id="numCuotas">
                 </div>
                 
                 <div class="input-group mb-3">
                     <span class="input-group-text">Nombre</span>
                     <input  type="text" class="form-control" 
                             aria-label="Sizing example input" 
-                            aria-describedby="inputGroup-sizing-default"
-                            onchange="obtenerNombre();" id="nombre">
+                            aria-describedby="inputGroup-sizing-default" id="nombre">
                 </div>
 
                 <div class="input-group mb-3">
                     <span class="input-group-text">Monto</span>
                     <input  type="number" class="form-control" 
                             aria-label="Sizing example input" }
-                            aria-describedby="inputGroup-sizing-default"
-                            onchange="obtenerMonto();" id="monto">
+                            aria-describedby="inputGroup-sizing-default" id="monto">
                 </div>
 
                 <div class="input-group mb-3">
-                    <label class="input-group-text" for="inputGroupSelect01">Moneda</label>
-                    <select class="form-select" id="moneda" onchange= "obtenerMoneda();">
+                    <label class="input-group-text" for="inputGroupSelect01">
+                        Moneda
+                    </label>
+                    <select class="form-select" id="moneda">
                         <option selected>Selecciona</option>
-                        <option value="mensual">ARS</option>
-                        <option value="meses">BRL</option>
-                        <option value="enero">UYU</option>
-                        <option value="febrero">USD</option>
-                        <option value="marzo">EUR</option>
+                        <option value="ARS">ARS</option>
+                        <option value="BRL">BRL</option>
+                        <option value="UYU">UYU</option>
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
                     </select>
                 </div>
 
                 <div class="d-grid gap-2 col-6 mx-auto">
-                    <button class="btn btn-primary" type="button">Ingresar</button>
+                    <button class="btn btn-primary" type="button" id="btnIngresar">
+                        Ingresar
+                    </button>
                 </div>
 
+            <!------------------------- CONTENT TABLE ------------------------------------->
             </div>
             <div class="col-9">
+
                 <h3>Resumen</h3>
+
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <th colspan="13" class="text-center">
-                                AÑO
+                            <th scope="colgroup" colspan="9">
+                                <select class="form-select" id="mes">
+                                    <option selected>MES</option>
+                                    <option value="1">Enero</option>
+                                    <option value="2">Febrero</option>
+                                    <option value="3">Marzo</option>
+                                    <option value="4">Abril</option>
+                                    <option value="5">Mayo</option>
+                                    <option value="6">Junio</option>
+                                    <option value="7">Julio</option>
+                                    <option value="8">Agosto</option>
+                                    <option value="9">Septiembre</option>
+                                    <option value="10">Octubre</option>
+                                    <option value="11">Noviembre</option>
+                                    <option value="12">Diciembre</option>
+                                </select>
                             </th>
                         </tr>
                     </thead>
-                    <thead>
-                        <tr>
-                            <th scope="col">Datos</th>
-                            <th scope="col">Enero</th>
-                            <th scope="col">Febrero</th>
-                            <th scope="col">Marzo</th>
-                            <th scope="col">Abril</th>
-                            <th scope="col">Mayo</th>
-                            <th scope="col">Junio</th>
-                            <th scope="col">Julio</th>
-                            <th scope="col">Agosto</th>
-                            <th scope="col">Septiembre</th>
-                            <th scope="col">Octubre</th>
-                            <th scope="col">Noviembre</th>
-                            <th scope="col">Diciembre</th>
-                        </tr>
-                    </thead>
-                    <thead>
-                        <tr>
-                            <th colspan="13" class="text-center">INGRESOS</th>    
-                        </tr>                        
-                    </thead>
+                </table>
 
-                    <thead>
-                        <tr>
-                            <th colspan="13" class="text-center">GASTOS</th>
-                        </tr>
-                    </thead>
-
-                    <thead>
-                        <tr>
-                            <th colspan="13" class="text-center">DEUDAS</th>
-                        </tr>
-                    </thead>
+                <table class="table table-striped table-hover">
                     <tbody>
-                    </tbody>
+                        <tr>
+                            <th colspan="9" class="text-center">DATOS</th> 
+                        </tr>
+                    </tbody>    
+
+                    <tbody id="datos"></tbody>    
+                    
                 </table>
             </div>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>

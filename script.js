@@ -1,56 +1,70 @@
-//------------FUNCION PARA OBTENER LA FECHA----------------------------
-function obtenerFecha(){
-    let datoMes = (new Date(document.getElementById("fecha").value)).getMonth();
-    let datoAño = (new Date(document.getElementById("fecha").value)).getFullYear();
-    console.log(datoMes);
-    console.log(datoAño);
-    }
-//---------------------------------------------------------------------
-
-//-----------FUNCION PARA OBTENER EL TIPO DE DATO----------------------
-function obtenerTipo(){
-    let tipoTexto = (document.getElementById("tipo"));
-    let tipoDato = tipoTexto.options[tipoTexto.selectedIndex].text;
-    console.log(tipoDato);
-}
-//---------------------------------------------------------------------
-
-//-----------FUNCION PARA MOSTRAR EL INPUT CUOTAS----------------------
-function mostrarCuotas() {
-    let valorTipo = document.getElementById("tipo").value;
-    if (valorTipo == "3"){
-    document.getElementById("cuotas").style.display = "flex";
-    }else {
-        document.getElementById("cuotas").style.display = "none";
+class dato {
+    constructor (mes,tipo,cuotas,nombre,monto,moneda) {
+        this.mes = mes;
+        this.tipo = tipo;
+        this.cuotas = cuotas;
+        this.nombre = nombre;
+        this.monto = monto;
+        this.moneda = moneda;
     }
 }
-//---------------------------------------------------------------------
 
-//-----------FUNCION PARA OBTENER LAS CUOTAS---------------------------
-function obtenerCuotas(){
-    let Cuotas = document.getElementById("numCuotas").value;
-    console.log(Cuotas);
-}
-//---------------------------------------------------------------------
+let datos = [];
 
-//----------FUNCION PARA OBTENER EL NOMBRE DEL DATO--------------------
-function obtenerNombre(){
-    let nombre = document.getElementById("nombre").value;
-    console.log(nombre);
-}
-//---------------------------------------------------------------------
+let datoMes = document.getElementById("mes");
+let datoTipo = document.getElementById("tipo");
+let datoCuotas = document.getElementById("numCuotas");
+let datoNombre = document.getElementById("nombre");
+let datoMonto = document.getElementById("monto"); 
+let datoMoneda = document.getElementById("moneda");
 
-//----------FUNCION PARA OBTENER EL MONTO------------------------------
-function obtenerMonto(){
-    let monto = document.getElementById("monto").value;
-    console.log(monto);
-}
-//---------------------------------------------------------------------
+let btnAlmacenar = document.getElementById("btnAlmacenar")
+let btnIngresar = document.getElementById("btnIngresar");
 
-//----------FUNCION PARA OBTENER EL TIPO DE MONEDA---------------------
-function obtenerMoneda(){
-    let tipoMoneda = document.getElementById("moneda");
-    let moneda = tipoMoneda.options[tipoMoneda.selectedIndex].text;
-    console.log(moneda);
-}
-//---------------------------------------------------------------------
+let mostrarDato = document.getElementById("dato");
+
+let imprimirIngreso = document.getElementById("datos");
+let obtenerDato
+
+
+btnIngresar.addEventListener("click", () => {
+    
+    let obtenerDato =   
+            new dato(datoMes.value, datoTipo.value, 
+                    datoCuotas.value, datoNombre.value, datoMonto.value, 
+                    datoMoneda.value);
+    
+    datos.push(obtenerDato);
+        
+    let tabla = `<table>`;
+    
+    for (const elem of datos) {
+        tabla = tabla + 
+                `<tr>
+                <td colspan="3">${elem.tipo}</td>
+                <td colspan="3">${elem.nombre}</td>
+                <td colspan="2">${elem.monto}</td>
+                <td colspan="1">${elem.moneda}</td>
+                </tr>`;
+    }
+    
+    console.log(obtenerDato.tipo);
+    tabla = tabla + `</table>`;
+    
+    imprimirIngreso.innerHTML = tabla;
+    
+})
+
+
+
+
+// //-----------FUNCION PARA MOSTRAR EL INPUT CUOTAS----------------------
+// function mostrarCuotas() {
+//     let valorTipo = document.getElementById("tipo").value;
+//     if (valorTipo == "3"){
+//     document.getElementById("cuotas").style.display = "flex";
+//     }else {
+//         document.getElementById("cuotas").style.display = "none";
+//     }
+// }
+// //---------------------------------------------------------------------
