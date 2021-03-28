@@ -38,8 +38,7 @@ function crearDato () {
 
 //-------------------- FUNCION PARA MOSTRAR LOS DATOS  --------------------------------
 
-function imprimirDato() {
-    
+function imprimirDato() {    
     
     let sumaIngresosARS = 0;
     let sumaIngresosBRL = 0;
@@ -65,14 +64,14 @@ function imprimirDato() {
     for (const elem of datos) {
 
         function ingresarIngreso (a,b){
-            ingreso = ingreso + `<tr>
+            ingreso = ingreso + `<tr class="table-active bg-primary">
                                     <td colspan="${a}">${elem.nombre}</td>
                                     <td colspan="${b}">${elem.monto} ${elem.moneda}</td>
                                     </td>
                                 </tr>`;
         }
         function ingresarGasto (a,b){
-            gasto = gasto + `<tr>
+            gasto = gasto + `<tr class="table-active bg-primary">
                                 <td colspan="${a}">${elem.nombre}</td>
                                 <td colspan="${b}">${elem.monto} ${elem.moneda}</td>
                             </tr>`;
