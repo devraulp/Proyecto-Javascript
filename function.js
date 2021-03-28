@@ -1,4 +1,4 @@
-//-------------------- MOSTRAR LOS DATOS DEL STORAGE  ---------------------------
+//-------------------- CONDICIONAL PARA MOSTRAR LOS DATOS DEL STORAGE  ------------
 
 if (localStorage.getItem("memoria") === null){
 
@@ -7,7 +7,6 @@ if (localStorage.getItem("memoria") === null){
     imprimirDato ();
 }
 
-
 // --------------------- EVENTO PARA CREAR OBJETO Y MOSTRARLO ---------------------
 
 btnIngresar.addEventListener("click", () => { 
@@ -15,7 +14,7 @@ btnIngresar.addEventListener("click", () => {
     imprimirDato()
 });
 
-// --------------------- EVENTO PARA GUARDAR DATOS  -----------------------------
+// --------------------- EVENTO PARA GUARDAR DATOS  -------------------------------
 
 btnGuardar.addEventListener("click", () => {     
     localStorage.setItem("memoria", JSON.stringify(datos)); 
@@ -159,6 +158,7 @@ function imprimirDato() {
 }
 
 // //-------------------- FUNCION PARA MOSTRAR EL INPUT CUOTAS----------------------
+
 // function mostrarCuotas() {
 //     let valorTipo = document.getElementById("tipo").value;
 //     if (valorTipo == "3"){
