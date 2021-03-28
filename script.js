@@ -23,37 +23,183 @@ let datoMonto = document.getElementById("monto");
 let datoMoneda = document.getElementById("moneda");
 let btnAlmacenar = document.getElementById("btnAlmacenar")
 let btnIngresar = document.getElementById("btnIngresar");
-let imprimirIngreso = document.getElementById("datos");
+
+let imprimirIngreso = document.getElementById("ingreso");
+let imprimirGasto = document.getElementById("gastos");
+
+let totalIngresoARS = document.getElementById("totalIngresoARS");
+let totalIngresoBRL = document.getElementById("totalIngresoBRL");
+let totalIngresoUYU = document.getElementById("totalIngresoUYU");
+let totalIngresoUSD = document.getElementById("totalIngresoUSD");
+let totalIngresoEUR = document.getElementById("totalIngresoEUR");
+
+let totalGastoARS = document.getElementById("totalGastoARS");
+let totalGastoBRL = document.getElementById("totalGastoBRL");
+let totalGastoUYU = document.getElementById("totalGastoUYU");
+let totalGastoUSD = document.getElementById("totalGastoUSD");
+let totalGastoEUR = document.getElementById("totalGastoEUR");
+
+let totalBalanceARS = document.getElementById("bGralARS");
+let totalBalanceBRL = document.getElementById("bGralBRL");
+let totalBalanceUYU = document.getElementById("bGralUYU");
+let totalBalanceUSD = document.getElementById("bGralUSD");
+let totalBalanceEUR = document.getElementById("bGralEUR");
+
+
+
+function crearDato () {
+    let obtenerDato = new dato(/* datoMes.value ,*/ datoTipo.value, 
+                            /* datoCuotas.value, */ datoNombre.value, 
+                            datoMonto.value, datoMoneda.value);
+        
+    datos.push(obtenerDato); 
+    sessionStorage.setItem("datos", JSON.stringify(datos));    
+    
+}  
 
 // --------------------- FUNCION PARA CREAR OBJETO Y MOSTRARLO ---------------------
-let obtenerDato
-btnIngresar.addEventListener("click", () => {
+
+btnIngresar.addEventListener("click", () => { 
+
+    crearDato();
     
-    let obtenerDato =   
-            new dato(/* datoMes.value ,*/ datoTipo.value, 
-                    /* datoCuotas.value, */ datoNombre.value, datoMonto.value, 
-                    datoMoneda.value);
-    
-    datos.push(obtenerDato);
-        
-    let tabla = `<table>`;
-    
-    for (const elem of datos) {
-        tabla = tabla + 
-                `<tr>
-                <td colspan="3">${elem.tipo}</td>
-                <td colspan="3">${elem.nombre}</td>
-                <td colspan="2">${elem.monto}</td>
-                <td colspan="1">${elem.moneda}</td>
-                </tr>`;
+    let sumaIngresosARS = 0;
+    let sumaIngresosBRL = 0;
+    let sumaIngresosUYU = 0;
+    let sumaIngresosUSD = 0;
+    let sumaIngresosEUR = 0;
+
+    let sumaGastosARS = 0;
+    let sumaGastosBRL = 0;
+    let sumaGastosUYU = 0;
+    let sumaGastosUSD = 0;
+    let sumaGastosEUR = 0;
+
+    let balanceGeneralARS;
+    let balanceGeneralBRL;
+    let balanceGeneralUYU;
+    let balanceGeneralUSD;
+    let balanceGeneralEUR;
+
+    let ingreso = `<table>`;
+    let gasto = `<table>`;
+
+    function ingresarIngreso (a,b){
+                ingreso = ingreso + `<tr>
+                                        <td colspan="${a}">${elem.nombre}</td>
+                                        <td colspan="${b}">${elem.monto} ${elem.moneda}</td>
+                                    </tr>`;
     }
+    function ingresarGasto (a,b){
+        gasto = gasto + `<tr>
+                            <td colspan="${a}">${elem.nombre}</td>
+                            <td colspan="${b}">${elem.monto} ${elem.moneda}</td>
+                        </tr>`;
+    }
+
+    for (const elem of datos) {        
+        
+        function ingresarIngreso (a,b){
+            ingreso = ingreso + `<tr>
+                                    <td colspan="${a}">${elem.nombre}</td>
+                                    <td colspan="${b}">${elem.monto} ${elem.moneda}</td>
+                                    </td>
+                                </tr>`;
+        }
+        function ingresarGasto (a,b){
+            gasto = gasto + `<tr>
+                                <td colspan="${a}">${elem.nombre}</td>
+                                <td colspan="${b}">${elem.monto} ${elem.moneda}</td>
+                            </tr>`;
+        }
+
+        if (elem.tipo == "Ingreso") {
+            
+            if (elem.moneda == "ARS" && elem.monto > 0) {
+                ingresarIngreso(4,5);
+                sumaIngresosARS = parseInt(elem.monto) + sumaIngresosARS;
+                totalIngresoARS.innerHTML = sumaIngresosARS + " " +  "ARS";
+            } else if (elem.moneda == "BRL" && elem.monto > 0){
+                ingresarIngreso(5,4);
+                sumaIngresosBRL = parseInt(elem.monto) + sumaIngresosBRL; 
+                totalIngresoBRL.innerHTML = sumaIngresosBRL + " " + "BRL";
+            }else if (elem.moneda == "UYU" && elem.monto > 0){
+                ingresarIngreso(6,3)
+                sumaIngresosUYU = parseInt(elem.monto) + sumaIngresosUYU; 
+                totalIngresoUYU.innerHTML = sumaIngresosUYU + " " + "UYU";
+            }else if (elem.moneda == "USD" && elem.monto > 0){
+                ingresarIngreso(7,2);
+                sumaIngresosUSD = parseInt(elem.monto) + sumaIngresosUSD;
+                totalIngresoUSD.innerHTML = sumaIngresosUSD + " " + "USD";
+            }else if (elem.moneda == "EUR" && elem.monto > 0){
+                ingresarIngreso(8,1);
+                sumaIngresosEUR = parseInt(elem.monto) + sumaIngresosEUR; 
+                totalIngresoEUR.innerHTML = sumaIngresosEUR + " " + "EUR"; 
+            }
+        }else if(elem.tipo == "Gasto") {
+            
+            if (elem.moneda == "ARS" && elem.monto > 0) {
+                ingresarGasto(4,5);
+                sumaGastosARS = parseInt(elem.monto) + sumaGastosARS;
+                totalGastoARS.innerHTML = sumaGastosARS + " " + "ARS";                           
+            } else if (elem.moneda == "BRL" && elem.monto > 0){
+                ingresarGasto(5,4);
+                sumaGastosBRL = parseInt(elem.monto) + sumaGastosBRL;
+                totalGastoBRL.innerHTML = sumaGastosBRL + " " + " BRL"; 
+            }else if (elem.moneda == "UYU" && elem.monto > 0){
+                ingresarGasto(6,3);
+                sumaGastosUYU = parseInt(elem.monto) + sumaGastosUYU;
+                totalGastoUYU.innerHTML = sumaGastosUYU + " " + " UYU"; 
+            }else if (elem.moneda == "USD" && elem.monto > 0){
+                ingresarGasto(7,2);
+                sumaGastosUSD = parseInt(elem.monto) + sumaGastosUSD;
+                totalGastoUSD.innerHTML = sumaGastosUSD + " " + " USD";  
+            }else if (elem.moneda == "EUR" && elem.monto > 0){
+                ingresarGasto(8,1);
+                sumaGastosEUR = parseInt(elem.monto) + sumaGastosEUR;
+                totalGastoEUR.innerHTML = sumaGastosEUR + " " + " EUR"; 
+            }
+        };
+        
+        if (sumaGastosARS > 0 && sumaIngresosARS > 0){
+        balanceGeneralARS = parseInt(sumaIngresosARS) - parseInt(sumaGastosARS);
+        totalBalanceARS.innerHTML = balanceGeneralARS + " " + "ARS"; 
+        }
+
+        if (sumaIngresosBRL > 0 && sumaGastosBRL > 0) {
+            balanceGeneralBRL = parseInt(sumaIngresosBRL) - parseInt(sumaGastosBRL);
+            totalBalanceBRL.innerHTML = balanceGeneralBRL + " " + " BRL";
+        }
+        
+        if (sumaIngresosUYU > 0 && sumaGastosUYU > 0) {
+            balanceGeneralUYU = parseInt(sumaIngresosUYU) - parseInt(sumaGastosUYU);
+        totalBalanceUYU.innerHTML = balanceGeneralUYU + " " + " UYU";
+        }
+        
+        if (sumaIngresosUSD > 0 && sumaGastosUSD > 0) {
+            balanceGeneralUSD = parseInt(sumaIngresosUSD) - parseInt(sumaGastosUSD);
+            totalBalanceUSD.innerHTML = balanceGeneralUSD + " " + " USD";
+        }
+        
+        if (sumaIngresosEUR > 0 && sumaGastosEUR > 0) {
+            balanceGeneralEUR = parseInt(sumaIngresosEUR) - parseInt(sumaGastosEUR);
+            totalBalanceEUR.innerHTML = balanceGeneralEUR + " " + " EUR";
+        }
+    }
+
+    ingreso = ingreso + `</table>`;
+    gasto = gasto + `</table>`;
+
+    imprimirIngreso.innerHTML = ingreso;
+    imprimirGasto.innerHTML = gasto;
     
-    console.log(obtenerDato.tipo);
-    tabla = tabla + `</table>`;
     
-    imprimirIngreso.innerHTML = tabla;
     
-})
+});
+
+
+
+
 
 // //-------------------- FUNCION PARA MOSTRAR EL INPUT CUOTAS----------------------
 // function mostrarCuotas() {
@@ -63,4 +209,3 @@ btnIngresar.addEventListener("click", () => {
 //     }else {
 //         document.getElementById("cuotas").style.display = "none";
 //     }
-// }

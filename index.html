@@ -25,7 +25,7 @@
                 <div class="input-group mb-3">
                     <label class="input-group-text" for="inputGroupSelect01">Tipo</label>
                     <select class="form-select" id="tipo">
-                        <option selected>Selecciona</option>
+                        <option selected value="Seleccionar">Seleccionar</option>
                         <option value="Ingreso">Ingreso</option>
                         <option value="Gasto">Gasto</option>
                         <!-- <option value="Deuda">Deuda</option> -->
@@ -68,7 +68,7 @@
                         <option value="BRL">BRL</option>
                         <option value="UYU">UYU</option>
                         <option value="USD">USD</option>
-                        <option value="EUR">EUR</option>
+                        <option value="EUR">EUR</option>                        
                     </select>
                 </div>
 
@@ -114,23 +114,58 @@
                 <!--------------- DATOS TABLE -------------------------------------------->
                 <table class="table table-striped table-hover">
 
-                    <!--------------- TITLE TABLE ---------------------------------------->
-                    <tbody>
-                        <tr>
-                            <th colspan="9" class="text-center">DATOS</th> 
-                        </tr>
-                    </tbody>    
-
                     <!--------------- CONTENT TABLE -------------------------------------->
-                    <tbody id="datos"></tbody> 
-                    
-                    <!-- <tbody>
+                    <thead>
                         <tr>
-                            <th colspan="6">TOTAL</th> 
+                            <th colspan="9" class="text-center table-success">INGRESOS</th> 
+                        </tr>
+                    </thead>
+                                                            
+                    <tbody id="ingreso"></tbody> 
+
+                    <tbody>
+                        <tr class="table-warning">
+                            <th colspan="4">TOTAL</th>
+                            <th colspan="1" id="totalIngresoARS"></th> 
+                            <th colspan="1" id="totalIngresoBRL"></th> 
+                            <th colspan="1" id="totalIngresoUYU"></th> 
+                            <th colspan="1" id="totalIngresoUSD"></th> 
+                            <th colspan="1" id="totalIngresoEUR"></th> 
                         </tr>
                         
-                    </tbody>  -->
+                    </tbody> 
+
+                    <thead>
+                        <tr>
+                            <th colspan="9" class="text-center table-danger">GASTOS</th> 
+                        </tr>
+                    </thead>
+
+                    <tbody id="gastos"></tbody> 
                     
+                    <tbody>
+                        <tr class="table-warning">
+                            <th colspan="4">TOTAL</th>
+                            <th colspan="1" id="totalGastoARS"></th> 
+                            <th colspan="1" id="totalGastoBRL"></th> 
+                            <th colspan="1" id="totalGastoUYU"></th> 
+                            <th colspan="1" id="totalGastoUSD"></th> 
+                            <th colspan="1" id="totalGastoEUR"></th> 
+                        </tr>
+                        
+                    </tbody> 
+                </table>
+                <table class="table table-striped table-hover">
+                    <tbody>
+                        <tr class="table-info">
+                            <th colspan="4">BALANCE GENERAL</th>
+                            <th colspan="1" id="bGralARS"></th> 
+                            <th colspan="1" id="bGralBRL"></th> 
+                            <th colspan="1" id="bGralUYU"></th> 
+                            <th colspan="1" id="bGralUSD"></th> 
+                            <th colspan="1" id="bGralEUR"></th> 
+                        </tr>
+                    </tbody> 
                 </table>
             </div>
         </div>
