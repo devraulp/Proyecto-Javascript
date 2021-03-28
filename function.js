@@ -1,67 +1,46 @@
-// --------------------- CLASS DONDE INGRESAN LOS DATOS ----------------------------
-class dato {
-    constructor (/* mes ,*/tipo,/* cuotas ,*/nombre,monto,moneda) {
-        // this.mes = mes;
-        this.tipo = tipo;
-        // this.cuotas = cuotas;
-        this.nombre = nombre;
-        this.monto = monto;
-        this.moneda = moneda;
-    }
+//-------------------- MOSTRAR LOS DATOS DEL STORAGE  ---------------------------
+
+if (localStorage.getItem("memoria") === null){
+
+}else {
+    datos = JSON.parse(localStorage.getItem("memoria"));
+    imprimirDato ();
 }
 
-// --------------------- ARRAY DE LA CLASS dato ------------------------------------
 
-let datos = [];
-
-// --------------------- VARIABLES HTML --------------------------------------------
-// let datoMes = document.getElementById("mes");
-let datoTipo = document.getElementById("tipo");
-// let datoCuotas = document.getElementById("numCuotas");
-let datoNombre = document.getElementById("nombre");
-let datoMonto = document.getElementById("monto"); 
-let datoMoneda = document.getElementById("moneda");
-let btnAlmacenar = document.getElementById("btnAlmacenar")
-let btnIngresar = document.getElementById("btnIngresar");
-
-let imprimirIngreso = document.getElementById("ingreso");
-let imprimirGasto = document.getElementById("gastos");
-
-let totalIngresoARS = document.getElementById("totalIngresoARS");
-let totalIngresoBRL = document.getElementById("totalIngresoBRL");
-let totalIngresoUYU = document.getElementById("totalIngresoUYU");
-let totalIngresoUSD = document.getElementById("totalIngresoUSD");
-let totalIngresoEUR = document.getElementById("totalIngresoEUR");
-
-let totalGastoARS = document.getElementById("totalGastoARS");
-let totalGastoBRL = document.getElementById("totalGastoBRL");
-let totalGastoUYU = document.getElementById("totalGastoUYU");
-let totalGastoUSD = document.getElementById("totalGastoUSD");
-let totalGastoEUR = document.getElementById("totalGastoEUR");
-
-let totalBalanceARS = document.getElementById("bGralARS");
-let totalBalanceBRL = document.getElementById("bGralBRL");
-let totalBalanceUYU = document.getElementById("bGralUYU");
-let totalBalanceUSD = document.getElementById("bGralUSD");
-let totalBalanceEUR = document.getElementById("bGralEUR");
-
-
-
-function crearDato () {
-    let obtenerDato = new dato(/* datoMes.value ,*/ datoTipo.value, 
-                            /* datoCuotas.value, */ datoNombre.value, 
-                            datoMonto.value, datoMoneda.value);
-        
-    datos.push(obtenerDato); 
-    sessionStorage.setItem("datos", JSON.stringify(datos));    
-    
-}  
-
-// --------------------- FUNCION PARA CREAR OBJETO Y MOSTRARLO ---------------------
+// --------------------- EVENTO PARA CREAR OBJETO Y MOSTRARLO ---------------------
 
 btnIngresar.addEventListener("click", () => { 
+    crearDato()
+    imprimirDato()
+});
 
-    crearDato();
+// --------------------- EVENTO PARA GUARDAR DATOS  -----------------------------
+
+btnGuardar.addEventListener("click", () => {     
+    localStorage.setItem("memoria", JSON.stringify(datos)); 
+});
+
+// --------------------- EVENTO PARA ELIMINAR DATOS  -----------------------------
+
+btnEliminar.addEventListener("click", () => {     
+    localStorage.clear(); 
+    location.reload();
+});
+
+//-------------------- FUNCION PARA OBTENER LOS DATOS DE LOS INPUT----------------------
+
+function crearDato () {   
+    obtenerDato = new dato(/* datoMes.value ,*/ datoTipo.value, 
+                                /* datoCuotas.value, */ datoNombre.value, 
+                                datoMonto.value, datoMoneda.value);
+    datos.push(obtenerDato);   
+}  
+
+//-------------------- FUNCION PARA MOSTRAR LOS DATOS  --------------------------------
+
+function imprimirDato() {
+    
     
     let sumaIngresosARS = 0;
     let sumaIngresosBRL = 0;
@@ -84,21 +63,8 @@ btnIngresar.addEventListener("click", () => {
     let ingreso = `<table>`;
     let gasto = `<table>`;
 
-    function ingresarIngreso (a,b){
-                ingreso = ingreso + `<tr>
-                                        <td colspan="${a}">${elem.nombre}</td>
-                                        <td colspan="${b}">${elem.monto} ${elem.moneda}</td>
-                                    </tr>`;
-    }
-    function ingresarGasto (a,b){
-        gasto = gasto + `<tr>
-                            <td colspan="${a}">${elem.nombre}</td>
-                            <td colspan="${b}">${elem.monto} ${elem.moneda}</td>
-                        </tr>`;
-    }
+    for (const elem of datos) {
 
-    for (const elem of datos) {        
-        
         function ingresarIngreso (a,b){
             ingreso = ingreso + `<tr>
                                     <td colspan="${a}">${elem.nombre}</td>
@@ -186,20 +152,11 @@ btnIngresar.addEventListener("click", () => {
             totalBalanceEUR.innerHTML = balanceGeneralEUR + " " + " EUR";
         }
     }
-
     ingreso = ingreso + `</table>`;
     gasto = gasto + `</table>`;
-
     imprimirIngreso.innerHTML = ingreso;
-    imprimirGasto.innerHTML = gasto;
-    
-    
-    
-});
-
-
-
-
+    imprimirGasto.innerHTML = gasto; 
+}
 
 // //-------------------- FUNCION PARA MOSTRAR EL INPUT CUOTAS----------------------
 // function mostrarCuotas() {
