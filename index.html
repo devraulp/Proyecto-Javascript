@@ -26,7 +26,7 @@
                 <!------------------ TIPO INPUT ----------------------------------------------->
                 <div class="input-group mb-3">
                     <label class="input-group-text" for="inputGroupSelect01">Tipo</label>
-                    <select class="form-select" id="tipo">
+                    <select class="form-select" id="tipo" name="options">
                         <option selected value="Seleccionar">Seleccionar</option>
                         <option value="Ingreso">Ingreso</option>
                         <option value="Gasto">Gasto</option>
@@ -152,7 +152,7 @@
 
                     <!--------------- DATOS TIPO GASTOS -------------------------------------->
 
-                    <tbody id="gastos"></tbody> 
+                    <tbody id="gasto"></tbody> 
 
                     <!--------------- TOTAL GASTOS -------------------------------------->
 
@@ -205,8 +205,7 @@
         </div>
 
     </div>
-
-    <script src="variables.js"></script>
-    <script src="function.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="script.js"></script> 
 </body>
 </html>
