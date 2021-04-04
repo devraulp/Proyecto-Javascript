@@ -22,8 +22,8 @@ let datoTipo = $("#tipo").on("change", (e) =>{datoTipo = e.target.value});
 let datoNombre = $("#nombre").on("change", (e) =>{datoNombre = e.target.value});
 let datoMonto = $("#monto").on("change", (e) =>{datoMonto = e.target.value});
 let datoMoneda = $("#moneda").on("change", (e) =>{datoMoneda = e.target.value});
-// let datoCuotas = document.getElementById("numCuotas");
-// let datoMes = document.getElementById("mes");
+// let datoCuotas = document.getdentById("numCuotas");
+// let datoMes = document.getdentById("mes");
 
 //-------------------- CONDICIONAL PARA MOSTRAR LOS DATOS DEL STORAGE  ------------
 
@@ -88,66 +88,66 @@ function imprimirDato() {
     let ingreso = `<table>`;
     let gasto = `<table>`;
 
-    for (const elem of datos) {
+    for (const d of datos) {
 
         function ingresarIngreso (a,b){
             ingreso = ingreso + `<tr class="table-active bg-primary">
-                                    <td colspan="${a}">${elem.nombre}</td>
-                                    <td colspan="${b}">${elem.monto} ${elem.moneda}</td>
+                                    <td colspan="${a}">${d.nombre}</td>
+                                    <td colspan="${b}">${d.monto} ${d.moneda}</td>
                                     </td>
                                 </tr>`;
         }
         function ingresarGasto (a,b){
             gasto = gasto + `<tr class="table-active bg-primary">
-                                <td colspan="${a}">${elem.nombre}</td>
-                                <td colspan="${b}">${elem.monto} ${elem.moneda}</td>
+                                <td colspan="${a}">${d.nombre}</td>
+                                <td colspan="${b}">${d.monto} ${d.moneda}</td>
                             </tr>`;
         }
 
-        if (elem.tipo == "Ingreso") {
+        if (d.tipo == "Ingreso") {
             
-            if (elem.moneda == "ARS" && elem.monto > 0) {
+            if (d.moneda == "ARS" && d.monto > 0) {
                 ingresarIngreso(4,5);
-                sumaIngresosARS = parseInt(elem.monto) + sumaIngresosARS;
+                sumaIngresosARS = parseInt(d.monto) + sumaIngresosARS;
                 $("#totalIngresoARS").html(sumaIngresosARS + " " +  "ARS");
-            } else if (elem.moneda == "BRL" && elem.monto > 0){
+            } else if (d.moneda == "BRL" && d.monto > 0){
                 ingresarIngreso(5,4);
-                sumaIngresosBRL = parseInt(elem.monto) + sumaIngresosBRL; 
+                sumaIngresosBRL = parseInt(d.monto) + sumaIngresosBRL; 
                 $("#totalIngresoBRL").html(sumaIngresosBRL + " " + "BRL");
-            }else if (elem.moneda == "UYU" && elem.monto > 0){
+            }else if (d.moneda == "UYU" && d.monto > 0){
                 ingresarIngreso(6,3)
-                sumaIngresosUYU = parseInt(elem.monto) + sumaIngresosUYU; 
+                sumaIngresosUYU = parseInt(d.monto) + sumaIngresosUYU; 
                 $("#totalIngresoUYU").html(sumaIngresosUYU + " " + "UYU");
-            }else if (elem.moneda == "USD" && elem.monto > 0){
+            }else if (d.moneda == "USD" && d.monto > 0){
                 ingresarIngreso(7,2);
-                sumaIngresosUSD = parseInt(elem.monto) + sumaIngresosUSD;
+                sumaIngresosUSD = parseInt(d.monto) + sumaIngresosUSD;
                 $("#totalIngresoUSD").html(sumaIngresosUSD + " " + "USD");
-            }else if (elem.moneda == "EUR" && elem.monto > 0){
+            }else if (d.moneda == "EUR" && d.monto > 0){
                 ingresarIngreso(8,1);
-                sumaIngresosEUR = parseInt(elem.monto) + sumaIngresosEUR; 
+                sumaIngresosEUR = parseInt(d.monto) + sumaIngresosEUR; 
                 $("#totalIngresoEUR").html(sumaIngresosEUR + " " + "EUR"); 
             }
-        }else if(elem.tipo == "Gasto") {
+        }else if(d.tipo == "Gasto") {
             
-            if (elem.moneda == "ARS" && elem.monto > 0) {
+            if (d.moneda == "ARS" && d.monto > 0) {
                 ingresarGasto(4,5);
-                sumaGastosARS = parseInt(elem.monto) + sumaGastosARS;
+                sumaGastosARS = parseInt(d.monto) + sumaGastosARS;
                 $("#totalGastoARS").html(sumaGastosARS + " " + "ARS");                           
-            } else if (elem.moneda == "BRL" && elem.monto > 0){
+            } else if (d.moneda == "BRL" && d.monto > 0){
                 ingresarGasto(5,4);
-                sumaGastosBRL = parseInt(elem.monto) + sumaGastosBRL;
+                sumaGastosBRL = parseInt(d.monto) + sumaGastosBRL;
                 $("#totalGastoBRL").html(sumaGastosBRL + " " + " BRL"); 
-            }else if (elem.moneda == "UYU" && elem.monto > 0){
+            }else if (d.moneda == "UYU" && d.monto > 0){
                 ingresarGasto(6,3);
-                sumaGastosUYU = parseInt(elem.monto) + sumaGastosUYU;
+                sumaGastosUYU = parseInt(d.monto) + sumaGastosUYU;
                 $("#totalGastoUYU").html(sumaGastosUYU + " " + " UYU"); 
-            }else if (elem.moneda == "USD" && elem.monto > 0){
+            }else if (d.moneda == "USD" && d.monto > 0){
                 ingresarGasto(7,2);
-                sumaGastosUSD = parseInt(elem.monto) + sumaGastosUSD;
+                sumaGastosUSD = parseInt(d.monto) + sumaGastosUSD;
                 $("#totalGastoUSD").html(sumaGastosUSD + " " + " USD");  
-            }else if (elem.moneda == "EUR" && elem.monto > 0){
+            }else if (d.moneda == "EUR" && d.monto > 0){
                 ingresarGasto(8,1);
-                sumaGastosEUR = parseInt(elem.monto) + sumaGastosEUR;
+                sumaGastosEUR = parseInt(d.monto) + sumaGastosEUR;
                 $("#totalGastoEUR").html(sumaGastosEUR + " " + " EUR"); 
             }
         };
@@ -190,9 +190,9 @@ function imprimirDato() {
 // //-------------------- FUNCION PARA MOSTRAR EL INPUT CUOTAS----------------------
 
 // function mostrarCuotas() {
-//     let valorTipo = document.getElementById("tipo").value;
+//     let valorTipo = document.getdentById("tipo").value;
 //     if (valorTipo == "3"){
-//     document.getElementById("cuotas").style.display = "flex";
+//     document.getdentById("cuotas").style.display = "flex";
 //     }else {
-//         document.getElementById("cuotas").style.display = "none";
+//         document.getdentById("cuotas").style.display = "none";
 //     }
