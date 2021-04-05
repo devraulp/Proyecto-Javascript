@@ -154,27 +154,27 @@ function imprimirDato() {
         
         if (sumaGastosARS > 0 && sumaIngresosARS > 0){
             balanceGeneralARS = parseInt(sumaIngresosARS) - parseInt(sumaGastosARS);
-            $("#totalBalanceARS").html(balanceGeneralARS + " " + "ARS"); 
+            $("#bGralARS").html(balanceGeneralARS + " " + "ARS"); 
         }
 
         if (sumaIngresosBRL > 0 && sumaGastosBRL > 0) {
             balanceGeneralBRL = parseInt(sumaIngresosBRL) - parseInt(sumaGastosBRL);
-            $("#totalBalanceBRL").html(balanceGeneralBRL + " " + " BRL");
+            $("#bGralBRL").html(balanceGeneralBRL + " " + " BRL");
         }
         
         if (sumaIngresosUYU > 0 && sumaGastosUYU > 0) {
             balanceGeneralUYU = parseInt(sumaIngresosUYU) - parseInt(sumaGastosUYU);
-            $("#totalBalanceUYU").html(balanceGeneralUYU + " " + " UYU");
+            $("#bGralUYU").html(balanceGeneralUYU + " " + " UYU");
         }
         
         if (sumaIngresosUSD > 0 && sumaGastosUSD > 0) {
             balanceGeneralUSD = parseInt(sumaIngresosUSD) - parseInt(sumaGastosUSD);
-            $("#totalBalanceUSD").html(balanceGeneralUSD + " " + " USD");
+            $("#bGralUSD").html(balanceGeneralUSD + " " + " USD");
         }
         
         if (sumaIngresosEUR > 0 && sumaGastosEUR > 0) {
             balanceGeneralEUR = parseInt(sumaIngresosEUR) - parseInt(sumaGastosEUR);
-            $("#totalBalanceEUR").html(balanceGeneralEUR + " " + " EUR");
+            $("#bGralEUR").html(balanceGeneralEUR + " " + " EUR");
         }
     }
 
