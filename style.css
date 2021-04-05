@@ -2,7 +2,7 @@ body {
     background-image: url(img/backgroundImage.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    margin-top: 5rem;  
+    margin-top: 2rem;  
 }
 
 
@@ -25,4 +25,20 @@ td {
 
 th {
     color: black;
+}
+
+.btn {
+    margin-bottom: 2rem;
+} 
+
+@media screen and (min-width: 1024px) {
+    .input-group {
+        padding: 0 15rem;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .input-group {
+        padding: 0 8rem;
+    }
 }
