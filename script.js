@@ -9,7 +9,7 @@ class dato {
         this.monto = monto;
         this.moneda = moneda;
     }
-}
+};
 
 // --------------------- ARRAY DE LA CLASS dato ------------------------------------
 
@@ -32,27 +32,27 @@ if (localStorage.getItem("memoria") === null){
 }else {
     datos = JSON.parse(localStorage.getItem("memoria"));
     imprimirDato ();
-}
+};
 
 // --------------------- EVENTO PARA CREAR OBJETO Y MOSTRARLO ---------------------
 
-$("#btnIngresar").on("click", () =>{
-    crearDato()
-    imprimirDato()
-})
+$("#btnIngresar").on("click", () =>{    
+    crearDato();
+    imprimirDato();        
+});
 
 // --------------------- EVENTO PARA GUARDAR DATOS  -------------------------------
 
 $("#btnGuardar").on("click", () => {
     localStorage.setItem("memoria", JSON.stringify(datos));
-})
+});
 
 // --------------------- EVENTO PARA ELIMINAR DATOS  -----------------------------
 
 $("#btnEliminar").on("click", () => {
     localStorage.clear(); 
     location.reload();
-})
+});
 
 //-------------------- FUNCION PARA OBTENER LOS DATOS DE LOS INPUT----------------------
 
@@ -61,7 +61,8 @@ function crearDato () {
                                 /* datoCuotas.value, */ datoNombre, 
                                 datoMonto, datoMoneda);
     datos.push(obtenerDato);
-}  
+    $("#ingreso, #gasto").hide();
+};  
 
 //-------------------- FUNCION PARA MOSTRAR LOS DATOS  --------------------------------
 
@@ -85,6 +86,7 @@ function imprimirDato() {
     let balanceGeneralUSD;
     let balanceGeneralEUR;
 
+    
     let ingreso = `<table>`;
     let gasto = `<table>`;
 
@@ -96,13 +98,20 @@ function imprimirDato() {
                                     <td colspan="${b}">${d.monto} ${d.moneda}</td>
                                     </td>
                                 </tr>`;
+            $("#resumenTitle, #ingresoTitle").slideDown(500);
+            $("#totalIngresoTitle").delay(500).slideDown(1000)
+            $("#btnGuardar, #btnEliminar").delay(1500).slideDown(500);
         }
         function ingresarGasto (a,b){
             gasto = gasto + `<tr class="table-active bg-primary">
                                 <td colspan="${a}">${d.nombre}</td>
                                 <td colspan="${b}">${d.monto} ${d.moneda}</td>
                             </tr>`;
+            $("#resumenTitle, #gastosTitle").slideDown(1000);
+            $("#totalGastosTitle").delay(1000).slideDown(1000)
+            $("#btnGuardar, #btnEliminar").delay(2000).slideDown(1000);
         }
+
 
         if (d.tipo == "Ingreso") {
             
@@ -126,7 +135,7 @@ function imprimirDato() {
                 ingresarIngreso(8,1);
                 sumaIngresosEUR = parseInt(d.monto) + sumaIngresosEUR; 
                 $("#totalIngresoEUR").html(sumaIngresosEUR + " " + "EUR"); 
-            }
+            }            
         }else if(d.tipo == "Gasto") {
             
             if (d.moneda == "ARS" && d.monto > 0) {
@@ -155,36 +164,57 @@ function imprimirDato() {
         if (sumaGastosARS > 0 && sumaIngresosARS > 0){
             balanceGeneralARS = parseInt(sumaIngresosARS) - parseInt(sumaGastosARS);
             $("#bGralARS").html(balanceGeneralARS + " " + "ARS"); 
+            $("#balanceTitle").slideDown(1000);
+            if (balanceGeneralARS < 0) {
+                $("#bGralARS").css("color", "red");
+            }
         }
 
         if (sumaIngresosBRL > 0 && sumaGastosBRL > 0) {
             balanceGeneralBRL = parseInt(sumaIngresosBRL) - parseInt(sumaGastosBRL);
             $("#bGralBRL").html(balanceGeneralBRL + " " + " BRL");
+            $("#balanceTitle").slideDown(1000);
+            if (balanceGeneralBRL < 0) {
+                $("#bGralBRL").css("color", "red");
+            }
         }
         
         if (sumaIngresosUYU > 0 && sumaGastosUYU > 0) {
             balanceGeneralUYU = parseInt(sumaIngresosUYU) - parseInt(sumaGastosUYU);
             $("#bGralUYU").html(balanceGeneralUYU + " " + " UYU");
+            $("#balanceTitle").slideDown(1000);
+            if (balanceGeneralUYU < 0) {
+                $("#bGralUYU").css("color", "red");
+            }
         }
         
         if (sumaIngresosUSD > 0 && sumaGastosUSD > 0) {
             balanceGeneralUSD = parseInt(sumaIngresosUSD) - parseInt(sumaGastosUSD);
             $("#bGralUSD").html(balanceGeneralUSD + " " + " USD");
+            $("#balanceTitle").slideDown(1000);
+            if (balanceGeneralUSD < 0) {
+                $("#bGralUSD").css("color", "red");
+            }
         }
         
         if (sumaIngresosEUR > 0 && sumaGastosEUR > 0) {
             balanceGeneralEUR = parseInt(sumaIngresosEUR) - parseInt(sumaGastosEUR);
             $("#bGralEUR").html(balanceGeneralEUR + " " + " EUR");
+            $("#balanceTitle").slideDown(1000);
+            if (balanceGeneralEUR < 0) {
+                $("#bGralEUR").css("color", "red");
+            }
         }
+
     }
-
     
-
     ingreso = ingreso + `</table>`;
-    gasto = gasto + `</table>`;
-    $("#ingreso").html(ingreso);
-    $("#gasto").html(gasto);
+    gasto = gasto + `</table>`;    
+    $("#ingreso").fadeIn("slow").html(ingreso);
+    $("#gasto").fadeIn("slow").html(gasto);   
+    $("input").val("");
 }
+
 
 
 // //-------------------- FUNCION PARA MOSTRAR EL INPUT CUOTAS----------------------
@@ -196,3 +226,8 @@ function imprimirDato() {
 //     }else {
 //         document.getdentById("cuotas").style.display = "none";
 //     }
+
+// $("h1").fadeIn(1000);
+// $("h3").slideDown (1000, () =>{
+//     $("#inputIngreso").slideDown(1000);
+// });

@@ -18,75 +18,76 @@
     <!------------------------------ SIDE MENU ------------------------------------------------>
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12" id="ingresoDatos">
 
                 <!--------------- SIDE MENU TITLE --------------------------------------------->
                 <h3 class="text-center">Ingreso de Datos</h3>
                 
-                <!------------------ TIPO INPUT ----------------------------------------------->
-                <div class="input-group mb-3">
-                    <label class="input-group-text" for="inputGroupSelect01">Tipo</label>
-                    <select class="form-select" id="tipo" name="options">
-                        <option selected value="Seleccionar">Seleccionar</option>
-                        <option value="Ingreso">Ingreso</option>
-                        <option value="Gasto">Gasto</option>
-                        <!-- <option value="Deuda">Deuda</option> -->
-                    </select>
-                </div>
+                <form id="inputIngreso">
+                    <!------------------ TIPO INPUT ----------------------------------------------->
+                    <div class="input-group mb-3">
+                        <label class="input-group-text">Tipo</label>
+                        <select class="form-select" id="tipo">                        
+                            <option selected style="display: none;">Seleccionar</option>
+                            <option value="Ingreso">Ingreso</option>
+                            <option value="Gasto">Gasto</option>
+                            <!-- <option value="Deuda">Deuda</option> -->
+                        </select>
+                    </div>
 
-                <!------------------ CUOTAS INPUT --------------------------------------------->
-                <!-- <div class="input-group mb-3" id="cuotas" style="display: none;" >
-                    <span class="input-group-text" id="inputGroup-sizing-default">Cuotas</span>
-                    <input  type="number" class="form-control" 
-                            aria-label="Sizing example input" 
-                            aria-describedby="inputGroup-sizing-default" 
-                            value="0" id="numCuotas">
-                </div> -->
-                
-                <!------------------ NOMBRE INPUT --------------------------------------------->
-                <div class="input-group mb-3">
-                    <span class="input-group-text">Nombre</span>
-                    <input  type="text" class="form-control" 
-                            aria-label="Sizing example input" 
-                            aria-describedby="inputGroup-sizing-default" id="nombre">
-                </div>
+                    <!------------------ CUOTAS INPUT --------------------------------------------->
+                    <!-- <div class="input-group mb-3" id="cuotas" style="display: none;" >
+                        <span class="input-group-text" id="inputGroup-sizing-default">Cuotas</span>
+                        <input  type="number" class="form-control" 
+                                aria-label="Sizing example input" 
+                                aria-describedby="inputGroup-sizing-default" 
+                                value="0" id="numCuotas">
+                    </div> -->
+                    
+                    <!------------------ NOMBRE INPUT --------------------------------------------->
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Descripción</span>
+                        <input  type="text" class="form-control" 
+                                aria-label="Sizing example input" 
+                                aria-describedby="inputGroup-sizing-default" id="nombre">
+                    </div>
 
-                <!------------------ MONTO INPUT --------------------------------------------->
-                <div class="input-group mb-3">
-                    <span class="input-group-text">Monto</span>
-                    <input  type="number" class="form-control" 
-                            aria-label="Sizing example input" }
-                            aria-describedby="inputGroup-sizing-default" id="monto">
-                </div>
+                    <!------------------ MONTO INPUT --------------------------------------------->
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Monto</span>
+                        <input  type="number" class="form-control" 
+                                aria-label="Sizing example input" }
+                                aria-describedby="inputGroup-sizing-default" id="monto">
+                    </div>
+                    <!------------------ MONEDA INPUT --------------------------------------------->
+                    <div class="input-group mb-3">
+                        <label class="input-group-text" for="inputGroupSelect01">
+                            Moneda
+                        </label>
+                        <select class="form-select" id="moneda">
+                            <option selected style="display: none;">Seleccionar</option>
+                            <option value="ARS">ARS</option>
+                            <option value="BRL">BRL</option>
+                            <option value="UYU">UYU</option>
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>                        
+                        </select>
+                    </div>
 
-                <!------------------ MONEDA INPUT --------------------------------------------->
-                <div class="input-group mb-3">
-                    <label class="input-group-text" for="inputGroupSelect01">
-                        Moneda
-                    </label>
-                    <select class="form-select" id="moneda">
-                        <option selected>Selecciona</option>
-                        <option value="ARS">ARS</option>
-                        <option value="BRL">BRL</option>
-                        <option value="UYU">UYU</option>
-                        <option value="USD">USD</option>
-                        <option value="EUR">EUR</option>                        
-                    </select>
-                </div>
-
-                <!------------------ BUTTON INGRESAR ------------------------------------------>
-                <div class="col-7 d-grid gap-2 mx-auto">
-                    <button class="btn btn-warning" type="button" id="btnIngresar">
-                        Ingresar
-                    </button>
-                </div>
+                    <!------------------ BUTTON INGRESAR ------------------------------------------>
+                    <div class="col-7 d-grid gap-2 mx-auto">
+                        <button class="btn btn-warning" type="button" id="btnIngresar">
+                            Ingresar
+                        </button>
+                    </div>
+                </form>
             </div>
             <!------------------------- CONTENT TABLE ------------------------------------->
             
             <div class="col-12">
 
                 <!--------------- TABLE TITLE --------------------------------------------->
-                <h3 class="text-center">Resumen</h3>
+                <h3 class="text-center" id="resumenTitle">Resumen</h3>
 
                 <!--------------- SELECT MES ---------------------------------------------->
                 <!-- <table class="table table-striped table-hover">
@@ -122,7 +123,9 @@
 
                     <thead>
                         <tr>
-                            <th colspan="9" class="text-center table-info">INGRESOS</th> 
+                            <th colspan="9" class="text-center table-info" id="ingresoTitle">
+                                INGRESOS
+                            </th> 
                         </tr>
                     </thead>
                     <!--------------- DATOS TIPO INGRESOS -------------------------------------->
@@ -132,8 +135,8 @@
                     <!--------------- TOTAL INGRESOS -------------------------------------->
 
                     <tbody>
-                        <tr class="table-warning">
-                            <th colspan="4">TOTAL</th>
+                        <tr class="table-warning" id="totalIngresoTitle">
+                            <th colspan="4">TOTAL INGRESOS</th>
                             <th colspan="1" id="totalIngresoARS"></th> 
                             <th colspan="1" id="totalIngresoBRL"></th> 
                             <th colspan="1" id="totalIngresoUYU"></th> 
@@ -146,7 +149,9 @@
 
                     <thead>
                         <tr>
-                            <th colspan="9" class="text-center table-info">GASTOS</th> 
+                            <th colspan="9" class="text-center table-info" id="gastosTitle">
+                                GASTOS
+                            </th> 
                         </tr>
                     </thead>
 
@@ -157,8 +162,8 @@
                     <!--------------- TOTAL GASTOS -------------------------------------->
 
                     <tbody>
-                        <tr class="table-warning">
-                            <th colspan="4">TOTAL</th>
+                        <tr class="table-warning" id="totalGastosTitle">
+                            <th colspan="4">TOTAL GASTOS</th>
                             <th colspan="1" id="totalGastoARS"></th> 
                             <th colspan="1" id="totalGastoBRL"></th> 
                             <th colspan="1" id="totalGastoUYU"></th> 
@@ -172,7 +177,7 @@
 
                 <table class="table table-striped table-hover">
                     <tbody>
-                        <tr class="table-secondary">
+                        <tr class="table-secondary" id="balanceTitle">
                             <th colspan="4">BALANCE GENERAL</th>
                             <th colspan="1" id="bGralARS"></th> 
                             <th colspan="1" id="bGralBRL"></th> 
