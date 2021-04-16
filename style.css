@@ -25,6 +25,11 @@ h1 {
 .input-group-text {
     background-color: rgb(255, 187, 0);
     padding-right: 1rem;
+    justify-content: center;
+}
+
+p {
+    text-align: center;
 }
 
 h3 {

@@ -215,8 +215,6 @@ function imprimirDato() {
     $("input").val("");
 }
 
-
-
 // //-------------------- FUNCION PARA MOSTRAR EL INPUT CUOTAS----------------------
 
 // function mostrarCuotas() {
@@ -231,3 +229,28 @@ function imprimirDato() {
 // $("h3").slideDown (1000, () =>{
 //     $("#inputIngreso").slideDown(1000);
 // });
+
+let valorMonedaNombre;
+let valorMoneda;
+
+
+$(document).ready(() => {
+    
+    $.ajax ({
+        method: "GET",
+        url: `https://www.dolarsi.com/api/api.php?type=valoresprincipales`,
+        data: JSON,
+        success: (respuesta) => {
+            valorMonedaNombre = respuesta[0].casa.nombre + " Argentino"
+            valorMoneda = respuesta[0].casa.compra
+            $("#cotizacion").append(valorMoneda);
+            $("#cotizacionNombre").append(valorMonedaNombre);
+
+        }
+    })
+
+    
+})
+
+
+
