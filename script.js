@@ -1,10 +1,17 @@
+// -------------------- PORTADA ------------------------------------------------
+
+
+$("#comenzar").on("click", () => {
+    $("#portada").hide();
+    $("#contenido").show();
+})
+
+
 // --------------------- CLASS DONDE INGRESAN LOS DATOS ----------------------------
 
 class dato {
-    constructor (/* mes ,*/tipo,/* cuotas ,*/nombre,monto,moneda) {
-        // this.mes = mes;
+    constructor (tipo,nombre,monto,moneda) {
         this.tipo = tipo;
-        // this.cuotas = cuotas;
         this.nombre = nombre;
         this.monto = monto;
         this.moneda = moneda;
@@ -22,8 +29,6 @@ let datoTipo = $("#tipo").on("change", (e) =>{datoTipo = e.target.value});
 let datoNombre = $("#nombre").on("change", (e) =>{datoNombre = e.target.value});
 let datoMonto = $("#monto").on("change", (e) =>{datoMonto = e.target.value});
 let datoMoneda = $("#moneda").on("change", (e) =>{datoMoneda = e.target.value});
-// let datoCuotas = document.getdentById("numCuotas");
-// let datoMes = document.getdentById("mes");
 
 //-------------------- CONDICIONAL PARA MOSTRAR LOS DATOS DEL STORAGE  ------------
 
@@ -57,9 +62,7 @@ $("#btnEliminar").on("click", () => {
 //-------------------- FUNCION PARA OBTENER LOS DATOS DE LOS INPUT----------------------
 
 function crearDato () {   
-    obtenerDato = new dato(/* datoMes.value ,*/ datoTipo, 
-                                /* datoCuotas.value, */ datoNombre, 
-                                datoMonto, datoMoneda);
+    obtenerDato = new dato(datoTipo, datoNombre, datoMonto, datoMoneda);
     datos.push(obtenerDato);
     $("#ingreso, #gasto").hide();
 };  
@@ -90,13 +93,16 @@ function imprimirDato() {
     let ingreso = `<table>`;
     let gasto = `<table>`;
 
+    let incremento = 0; 
+
     for (const d of datos) {
 
         function ingresarIngreso (a,b){
-            ingreso = ingreso + `<tr class="table-active bg-primary">
+            
+            incremento++;
+            ingreso = ingreso + `<tr class="table-active bg-primary"">
                                     <td colspan="${a}">${d.nombre}</td>
                                     <td colspan="${b}">${d.monto} ${d.moneda}</td>
-                                    </td>
                                 </tr>`;
             $("#resumenTitle, #ingresoTitle").slideDown(500);
             $("#totalIngresoTitle").delay(500).slideDown(1000)
@@ -214,43 +220,3 @@ function imprimirDato() {
     $("#gasto").fadeIn("slow").html(gasto);   
     $("input").val("");
 }
-
-// //-------------------- FUNCION PARA MOSTRAR EL INPUT CUOTAS----------------------
-
-// function mostrarCuotas() {
-//     let valorTipo = document.getdentById("tipo").value;
-//     if (valorTipo == "3"){
-//     document.getdentById("cuotas").style.display = "flex";
-//     }else {
-//         document.getdentById("cuotas").style.display = "none";
-//     }
-
-// $("h1").fadeIn(1000);
-// $("h3").slideDown (1000, () =>{
-//     $("#inputIngreso").slideDown(1000);
-// });
-
-let valorMonedaNombre;
-let valorMoneda;
-
-
-$(document).ready(() => {
-    
-    $.ajax ({
-        method: "GET",
-        url: `https://www.dolarsi.com/api/api.php?type=valoresprincipales`,
-        data: JSON,
-        success: (respuesta) => {
-            valorMonedaNombre = respuesta[0].casa.nombre + " Argentino"
-            valorMoneda = respuesta[0].casa.compra
-            $("#cotizacion").append(valorMoneda);
-            $("#cotizacionNombre").append(valorMonedaNombre);
-
-        }
-    })
-
-    
-})
-
-
-

@@ -4,10 +4,6 @@ body {
     margin-top: 2rem;
 }
 
-/* #inputIngreso {
-    display: none;
-} */
-
 #resumenTitle, #ingresoTitle, #totalIngresoTitle, 
 #gastosTitle, #totalGastosTitle, #balanceTitle,
 #btnGuardar, #btnEliminar {
@@ -15,17 +11,37 @@ body {
 }
 
 
+img {    
+    margin-bottom: 20px;
+    width: inherit;    
+}
+
 h1 {
-    font-size: 4rem;
+    font-size: 2rem;
+    padding: 1rem;
     color: white;
-    background-color: rgba(0, 17, 255, 0.289);
-    /* display: none; */
+    background-color: rgba(0, 17, 255, 0.144); 
+    border-radius: 5rem;
+}
+
+#portada {
+    text-align: center;
+}
+
+#portada button {
+    margin: 20px 0;
+}
+
+#contenido {
+    display: none;
 }
 
 .input-group-text {
-    background-color: rgb(255, 187, 0);
+    background-image: linear-gradient(rgb(3, 0, 204), rgb(0, 225, 255));
     padding-right: 1rem;
     justify-content: center;
+    color: white;
+    font-weight: bold;
 }
 
 p {
@@ -35,9 +51,9 @@ p {
 h3 {
     color: white;
     padding: 0.5rem;
-    background-color: rgba(0, 17, 255, 0.289);
-    /* display: none; */
+    background-image: linear-gradient( rgb(3, 0, 204),rgb(0, 225, 255) );
 }
+
 
 td {
     color: antiquewhite;
@@ -50,7 +66,9 @@ th {
 
 .btn {
     margin-bottom: 2rem;
+    font-weight: bold;
 } 
+
 
 @media screen and (min-width: 1024px) {
     .input-group {
@@ -61,5 +79,11 @@ th {
 @media screen and (min-width: 768px) {
     .input-group {
         padding: 0 8rem;
-    }
+    }    
+}
+
+@media screen and (max-width: 425px) {
+    h1 {
+        font-size: 1.4rem;
+    }   
 }

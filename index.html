@@ -12,11 +12,23 @@
     <!------------------------------- HEADER -------------------------------------------------->
     
     <div class="container">
-        <h1 class="display-1, text-center">Mi Balance</h1>
+        <img src="./Logo.png" alt="" srcset="">
+    </div>
+
+    <div class="container" id="portada">
+        <h1 class="display-1, text-center">
+            Bienvenido a MIBALANCE!!! <br> <br>           
+            Mi Balance es una aplicacion <br>
+            que te permite llevar un control <br>
+            de tus Ingresos y Gastos del Mes <br>
+            para que puedas tener un control <br>
+            de tus finanzas personales. <br>
+        </h1>
+        <button class="btn btn-warning" id="comenzar" >Comenzar</button>
     </div>
 
     <!------------------------------ SIDE MENU ------------------------------------------------>
-    <div class="container">
+    <div class="container" id="contenido">
         <div class="row">
             <div class="col-12" id="ingresoDatos">
 
@@ -34,15 +46,6 @@
                             <!-- <option value="Deuda">Deuda</option> -->
                         </select>
                     </div>
-
-                    <!------------------ CUOTAS INPUT --------------------------------------------->
-                    <!-- <div class="input-group mb-3" id="cuotas" style="display: none;" >
-                        <span class="input-group-text" id="inputGroup-sizing-default">Cuotas</span>
-                        <input  type="number" class="form-control" 
-                                aria-label="Sizing example input" 
-                                aria-describedby="inputGroup-sizing-default" 
-                                value="0" id="numCuotas">
-                    </div> -->
                     
                     <!------------------ NOMBRE INPUT --------------------------------------------->
                     <div class="input-group mb-3">
@@ -89,41 +92,15 @@
                 <!--------------- TABLE TITLE --------------------------------------------->
                 <h3 class="text-center" id="resumenTitle">Resumen</h3>
 
-                <!--------------- SELECT MES ---------------------------------------------->
-                <!-- <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="colgroup" colspan="9">
-                                <select class="form-select" id="mes">
-                                    <option selected>MES</option>
-                                    <option value="1">Enero</option>
-                                    <option value="2">Febrero</option>
-                                    <option value="3">Marzo</option>
-                                    <option value="4">Abril</option>
-                                    <option value="5">Mayo</option>
-                                    <option value="6">Junio</option>
-                                    <option value="7">Julio</option>
-                                    <option value="8">Agosto</option>
-                                    <option value="9">Septiembre</option>
-                                    <option value="10">Octubre</option>
-                                    <option value="11">Noviembre</option>
-                                    <option value="12">Diciembre</option>
-                                </select>
-                            </th>
-                        </tr>
-                    </thead>
-                </table> -->
-
                 <!--------------- DATOS TABLE -------------------------------------------->
+                
                 <table class="table table-striped table-hover">
 
-                    <!--------------- CONTENT TABLE -------------------------------------->
-
-                    <!--------------- INGRESOS TITLE -------------------------------------->
+                <!--------------- INGRESOS TITLE -------------------------------------->
 
                     <thead>
                         <tr>
-                            <th colspan="9" class="text-center table-info" id="ingresoTitle">
+                            <th colspan="12" class="text-center table-info" id="ingresoTitle">
                                 INGRESOS
                             </th> 
                         </tr>
@@ -149,7 +126,7 @@
 
                     <thead>
                         <tr>
-                            <th colspan="9" class="text-center table-info" id="gastosTitle">
+                            <th colspan="12" class="text-center table-info" id="gastosTitle">
                                 GASTOS
                             </th> 
                         </tr>
@@ -168,7 +145,7 @@
                             <th colspan="1" id="totalGastoBRL"></th> 
                             <th colspan="1" id="totalGastoUYU"></th> 
                             <th colspan="1" id="totalGastoUSD"></th> 
-                            <th colspan="1" id="totalGastoEUR"></th> 
+                            <th colspan="1" id="totalGastoEUR"></th>
                         </tr>                        
                     </tbody>
                 </table>
@@ -196,7 +173,7 @@
                         </button>
                     </div>
     
-                    <!------------------ BUTTON GUARDAR ------------------------------------------>
+                    <!------------------ BUTTON BORRAR ------------------------------------------>
     
                     <div class="col-6 d-grid gap-2 mx-auto">
                         <button class="btn btn-warning" type="button" id="btnEliminar">
@@ -204,14 +181,7 @@
                         </button>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-12">
-                <span class="input-group-text" id="cotizacionNombre"></span>
-                <p  type="text" class="form-control" 
-                    aria-label="Sizing example input" 
-                    aria-describedby="inputGroup-sizing-default" id="cotizacion"/>
-            </div>        
+            </div>  
 
         </div>
 
